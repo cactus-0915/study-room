@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>湛江科技学院自习室预约</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            background: url('./bg.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        .card {
+            width: 420px;
+            padding: 36px 32px;
+            background: rgba(255,255,255,0.88);
+            border-radius: 16px;
+            backdrop-filter: blur(8px);
+            text-align: center;
+        }
+        .card h1 { font-size: 26px; color: #222; margin-bottom: 16px; }
+        .card .info { font-size: 15px; color: #444; margin: 8px 0; }
+        .btn {
+            margin-top: 24px;
+            padding: 12px 36px;
+            background: #4096ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:disabled { background: #aaa; cursor: not-allowed; }
+        .modal {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 240px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            display: none;
+            z-index: 999;
+            text-align: center;
+        }
+        .modal h3 { font-size: 18px; margin-bottom: 10px; }
+        .modal p { font-size: 13px; color: #666; margin-bottom: 16px; }
+        .close-btn {
+            padding: 4px 16px;
+            background: #4096ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>自习室：安静自习室</h1>
+        <p class="info">开放时间：08:00–22:00</p>
+        <p class="info">剩余座位：8 / 30</p>
+        <button class="btn" id="orderBtn">预约座位</button>
+    </div>
+
+    <div class="modal" id="modal">
+        <h3>预约成功！</h3>
+        <p>请按时到自习室就座</p>
+        <button class="close-btn" id="closeBtn">关闭</button>
+    </div>
+
+    <script>
+        const btn = document.getElementById('orderBtn');
+        const modal = document.getElementById('modal');
+        const closeBtn = document.getElementById('closeBtn');
+        btn.onclick = function() {
+            modal.style.display = 'block';
+            this.innerText = '已预约';
+            this.disabled = true;
+        }
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
